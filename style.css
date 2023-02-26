@@ -1,0 +1,99 @@
+:root{
+	--primary-background-color:hsl(183, 100%, 15%);
+	--secondary-background-color:hsl(189, 41%, 97%);
+	--hover-color:hsl(185, 41%, 84%);
+	--primary-font-color:hsl(189, 41%, 97%);
+	--secondary-font-color:hsl(184, 14%, 56%);
+	--white:hsl(0, 0%, 100%);
+	--soft-edges:8px;
+	--rounded-edges:20px;
+	--full-circle-border:50%;
+	--fs-small: 1rem;
+	--fs-medium:2rem;
+	--fs-large:3rem;
+	--fw-light: 200;
+	--fw-regular: 400;
+	--fw-medium: 500;
+	--fw-semi-bold: 600;
+	--fw-bold: 700;
+	--fw-extra-bold: 900;
+}
+
+/*___________________________________________Reset_____________________________________________*/
+
+
+/* Box sizing rules */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Remove default margin */
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Make images easier to work with */
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/*______________________________________________Utility Classes____________________________________________*/
+
+
+
+/*______________________________________________Styles____________________________________________________*/

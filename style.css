@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Big+Shoulders+Display:wght@700&family=Josefin+Sans:wght@300;400;600&family=Karla:wght@400;700&family=Kumbh+Sans:wght@400;700&family=League+Spartan:wght@400;500;700&family=Lexend+Deca&family=Libre+Franklin:wght@300;600;700&family=Manrope:wght@500;700&family=Open+Sans&family=Poppins:wght@200;400;600&family=Raleway:wght@400;700&family=Space+Mono:wght@400;700&display=swap');
 
 :root{
+	--strong-cyan:hsl(172, 67%, 45%);
 	--very-dark-cyan: hsl(183, 100%, 15%);
 	--dark-grayish-cyan: hsl(186, 14%, 43%);
 	--grayish-cyan: hsl(184, 14%, 56%);
@@ -10,9 +11,10 @@
 	--slightly-rounded-edges:4px;
 	--rounded-edges:20px;
 	--full-circle-border:50%;
+	--fs-extremely-small: 0.75rem;
 	--fs-very-small: 0.85rem;
-	--fs-small: 1rem;
-	--fs-medium:2rem;
+	--fs-small: 1.25rem;
+	--fs-medium:1.75rem;
 	--fs-large:3rem;
 	--fw-light: 200;
 	--fw-regular: 400;
@@ -99,6 +101,16 @@ select {
 	flex-direction: column;
 }
 
+.flex-row{
+	display: flex;
+	flex-direction: row;
+}
+
+.selected{
+	background-color: var(--strong-cyan)!important;
+	color: var(--very-dark-cyan)!important;
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -111,27 +123,32 @@ input[type="number"]::-webkit-outer-spin-button {
 body{
 	font-family: 'Space Mono', monospace;
 	background-color: var(--light-grayish-cyan);
-	min-height: 100vh;
+	font-weight: var(--fw-bold);
+	padding: 0;
 	display: grid;
 	place-items: center;
-	font-weight: var(--fw-bold);
+}
+
+main{
+	--max-width: 40rem;
+
 }
 
 .main-container{
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 	gap: 2rem;
 }
 
 .calculator-container{
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 	gap: 2rem;
 	background-color: var(--white);
 	border-radius: var(--rounded-edges);
-	padding: 1rem;
+	padding: 2rem;
 	width: 100%;
 }
 
@@ -143,6 +160,17 @@ body{
 
 .bill{
 	gap: 0.25rem;
+	position: relative;
+}
+
+.bill img{
+	position: absolute;
+	top: 2.25rem;
+	left: 1rem;
+}
+
+.bill input::placeholder{
+	color: var(--grayish-cyan);
 }
 
 label, h1{
@@ -155,10 +183,14 @@ input{
 	background-color: var(--very-light-grayish-cyan);
 	padding: 0.5rem;
 	text-align: right;
+	font-size: var(--fs-small);
+	font-weight: var(--fw-bold);
+	color: var(--very-dark-cyan);
+	border-radius: var(--slightly-rounded-edges);
 }
 
-::placeholder{
-	color: var(--dark-grayish-cyan);
+input:focus{
+	outline: 2px solid var(--strong-cyan);
 }
 
 .percentages-container{
@@ -167,6 +199,11 @@ input{
 
 button{
 	cursor: pointer;
+}
+
+button:hover{
+	background-color: var(--light-grayish-cyan);
+	color: var(--very-dark-cyan);
 }
 
 .percentages{
@@ -181,25 +218,82 @@ button{
 	background-color: var(--very-dark-cyan);
 	color: var(--white);
 	border-radius: var(--slightly-rounded-edges);
+	font-size: var(--fs-small);
 }
 
 .custom{
-	max-width: 8rem;
+	max-width: 13rem;
 	background-color: var(--very-light-grayish-cyan);
 	border-radius: var(--slightly-rounded-edges);
 }
 
 .custom input::placeholder{
-	text-align: right!important;
+	text-align: right;
+	color: var(--very-dark-cyan);
 }
 
+.number-of-people{
+	gap: 1rem;
+	position: relative;
+}
 
+.number-of-people img{
+	position: absolute;
+	top: 3rem;
+	left: 1rem;
+}
+
+.number-of-people input::placeholder{
+	color: var(--grayish-cyan);
+}
 
 .output{
 	background-color: var(--very-dark-cyan);
 	color: var(--white);
 	border-radius: var(--rounded-edges);
 	padding: 2rem 1.25rem;
+	justify-content: space-between;
 }
 
+.results{
+	gap: 2rem;
+}
 
+.tip-amount{
+	justify-content: space-between;
+	align-items: center;
+}
+
+.output-text p{
+	font-size: var(--fs-small);
+}
+
+.output-text span{
+	font-size: var(--fs-very-small);
+	color: var(--dark-grayish-cyan);
+}
+
+.amount{
+	font-size: var(--fs-medium);
+	color: var(--strong-cyan);
+}
+
+.reset{
+	border: 0;
+	padding: 0.5rem 0;
+	text-transform: uppercase;
+	background-color: var(--strong-cyan);
+	border-radius: var(--slightly-rounded-edges);
+}
+
+.reset:hover{
+	background-color: var(--light-grayish-cyan);
+}
+
+.warning{
+	position: absolute;
+	right: 0;
+	font-size: var(--fs-very-small);
+	color: red;
+	opacity: 0;
+}

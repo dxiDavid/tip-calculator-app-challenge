@@ -14,14 +14,16 @@
 <body>
      <main>
       <div class="main-container">
-        <div class="logo">
+        <!--div class="logo">
           <img src="./images/logo.svg" alt="logo">
-        </div>
+        </!--div-->
         <div class="calculator-container">
           <div class="parameters flex-column">
             <div class="bill flex-column">
+              <p class="warning">Cannot be 0</p>
               <label for="bill">Bill</label>
-              <input type="number" name="total bill" id="total-bill" placeholder="$">
+              <input type="number" name="total bill" id="total-bill" placeholder="0">
+              <img src="./images/icon-dollar.svg" alt="dollar sign">
             </div>
             <div class="percentages-container flex-column">
               <h1>Select Tip %</h1>
@@ -34,33 +36,41 @@
                 <input type="number" name="custom percentage" id="custom-percentage" placeholder="Custom" class="custom">
               </div>
             </div>
-            <label for="number of people">Number of People</label>
-            <input type="number" name="number of people" id="number-of-people" placeholder="0">
+            <div class="number-of-people flex-column">
+              <p class="warning">Cannot be 0</p>
+              <label for="number of people">Number of People</label>
+              <input type="number" name="number of people" id="number-of-people" placeholder="0">
+              <img src="./images/icon-person.svg" alt="person icon">
+            </div>
           </div>
           <div class="output flex-column">
-            <div class="tip-amount">
-              <div class="text">
+           <div class="results flex-column">
+            <div class="tip-amount flex-row">
+              <div class="output-text">
                  <p>Tip Amount</p> 
                 <span class="sub-text">/ person</span>
               </div>
               <div class="amount">
-                <p>&dollar;<span class="tip-amount-value"></span></p>
+                <p>&dollar;<span class="tip-amount-value">0</span></p>
               </div>
             </div>
-            <div class="tip-amount">
-              <div class="text">
+            <div class="tip-amount flex-row">
+              <div class="output-text">
                 <p>Total</p> 
                 <span class="sub-text">/ person</span>
               </div>
               <div class="amount">
-                <p>&dollar;<span class="total-amount-value"></span></p>
+                <p>&dollar;<span class="total-amount-value">0</span></p>
               </div>
             </div>
+           </div>
             <button class="reset">Reset</button>
           </div>
         </div>
       </div>
      </main>
+   
+    
      <script src="./calculator.js"></script>
 </body>
 </html>

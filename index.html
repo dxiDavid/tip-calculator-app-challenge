@@ -3,42 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <link rel="stylesheet" href="./style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Big+Shoulders+Display:wght@700&family=Josefin+Sans:wght@300;400;600&family=Karla:wght@400;700&family=Kumbh+Sans:wght@400;700&family=League+Spartan:wght@400;500;700&family=Lexend+Deca&family=Libre+Franklin:wght@300;600;700&family=Manrope:wght@500;700&family=Open+Sans&family=Poppins:wght@200;400;600&family=Raleway:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <title>Frontend Mentor | Tip calculator app</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
 <body>
-
-  Bill
-
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
-
-  Number of People
-
-  Tip Amount
-  / person
-
-  Total
-  / person
-
-  Reset
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+     <main>
+      <div class="main-container">
+        <div class="logo">
+          <img src="./images/logo.svg" alt="logo">
+        </div>
+        <div class="calculator-container">
+          <div class="parameters flex-column">
+            <div class="bill flex-column">
+              <label for="bill">Bill</label>
+              <input type="number" name="total bill" id="total-bill" placeholder="$">
+            </div>
+            <div class="percentages-container flex-column">
+              <h1>Select Tip %</h1>
+              <div class="percentages">
+                <button percentage="0.05" class="percentage-btn">5%</button>
+                <button percentage="0.10" class="percentage-btn">10%</button>
+                <button percentage="0.15" class="percentage-btn">15%</button>
+                <button percentage="0.25" class="percentage-btn">25%</button>
+                <button percentage="0.50" class="percentage-btn">50%</button>
+                <input type="number" name="custom percentage" id="custom-percentage" placeholder="Custom" class="custom">
+              </div>
+            </div>
+            <label for="number of people">Number of People</label>
+            <input type="number" name="number of people" id="number-of-people" placeholder="0">
+          </div>
+          <div class="output flex-column">
+            <div class="tip-amount">
+              <div class="text">
+                 <p>Tip Amount</p> 
+                <span class="sub-text">/ person</span>
+              </div>
+              <div class="amount">
+                <p>&dollar;<span class="tip-amount-value"></span></p>
+              </div>
+            </div>
+            <div class="tip-amount">
+              <div class="text">
+                <p>Total</p> 
+                <span class="sub-text">/ person</span>
+              </div>
+              <div class="amount">
+                <p>&dollar;<span class="total-amount-value"></span></p>
+              </div>
+            </div>
+            <button class="reset">Reset</button>
+          </div>
+        </div>
+      </div>
+     </main>
+     <script src="./calculator.js"></script>
 </body>
 </html>

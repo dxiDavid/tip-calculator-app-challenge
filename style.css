@@ -1,22 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Big+Shoulders+Display:wght@700&family=Josefin+Sans:wght@300;400;600&family=Karla:wght@400;700&family=Kumbh+Sans:wght@400;700&family=League+Spartan:wght@400;500;700&family=Lexend+Deca&family=Libre+Franklin:wght@300;600;700&family=Manrope:wght@500;700&family=Open+Sans&family=Poppins:wght@200;400;600&family=Raleway:wght@400;700&family=Space+Mono:wght@400;700&display=swap');
+
 :root{
-	--primary-background-color:hsl(183, 100%, 15%);
-	--secondary-background-color:hsl(189, 41%, 97%);
-	--hover-color:hsl(185, 41%, 84%);
-	--primary-font-color:hsl(189, 41%, 97%);
-	--secondary-font-color:hsl(184, 14%, 56%);
+	--very-dark-cyan: hsl(183, 100%, 15%);
+	--dark-grayish-cyan: hsl(186, 14%, 43%);
+	--grayish-cyan: hsl(184, 14%, 56%);
+	--light-grayish-cyan: hsl(185, 41%, 84%);
+	--very-light-grayish-cyan: hsl(189, 41%, 97%);
 	--white:hsl(0, 0%, 100%);
-	--soft-edges:8px;
+	--slightly-rounded-edges:4px;
 	--rounded-edges:20px;
 	--full-circle-border:50%;
+	--fs-very-small: 0.85rem;
 	--fs-small: 1rem;
 	--fs-medium:2rem;
 	--fs-large:3rem;
 	--fw-light: 200;
 	--fw-regular: 400;
-	--fw-medium: 500;
-	--fw-semi-bold: 600;
 	--fw-bold: 700;
-	--fw-extra-bold: 900;
 }
 
 /*___________________________________________Reset_____________________________________________*/
@@ -94,6 +94,112 @@ select {
 
 /*______________________________________________Utility Classes____________________________________________*/
 
+.flex-column{
+	display: flex;
+	flex-direction: column;
+}
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
 
 /*______________________________________________Styles____________________________________________________*/
+
+
+body{
+	font-family: 'Space Mono', monospace;
+	background-color: var(--light-grayish-cyan);
+	min-height: 100vh;
+	display: grid;
+	place-items: center;
+	font-weight: var(--fw-bold);
+}
+
+.main-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
+}
+
+.calculator-container{
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	background-color: var(--white);
+	border-radius: var(--rounded-edges);
+	padding: 1rem;
+	width: 100%;
+}
+
+.parameters{
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.bill{
+	gap: 0.25rem;
+}
+
+label, h1{
+	font-size: var(--fs-very-small);
+	color: var(--dark-grayish-cyan);
+}
+
+input{
+	border: 0;
+	background-color: var(--very-light-grayish-cyan);
+	padding: 0.5rem;
+	text-align: right;
+}
+
+::placeholder{
+	color: var(--dark-grayish-cyan);
+}
+
+.percentages-container{
+	gap: 1rem;
+}
+
+button{
+	cursor: pointer;
+}
+
+.percentages{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+}
+
+.percentage-btn{
+	padding: 0.5rem 3rem;
+	border: 0;
+	background-color: var(--very-dark-cyan);
+	color: var(--white);
+	border-radius: var(--slightly-rounded-edges);
+}
+
+.custom{
+	max-width: 8rem;
+	background-color: var(--very-light-grayish-cyan);
+	border-radius: var(--slightly-rounded-edges);
+}
+
+.custom input::placeholder{
+	text-align: right!important;
+}
+
+
+
+.output{
+	background-color: var(--very-dark-cyan);
+	color: var(--white);
+	border-radius: var(--rounded-edges);
+	padding: 2rem 1.25rem;
+}
+
+

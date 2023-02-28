@@ -14,13 +14,13 @@
 <body>
      <main>
       <div class="main-container">
-        <!--div class="logo">
+        <div class="logo">
           <img src="./images/logo.svg" alt="logo">
-        </!--div-->
+        </div>
         <div class="calculator-container">
           <div class="parameters flex-column">
             <div class="bill flex-column">
-              <p class="warning">Cannot be 0</p>
+              <p class="warning-bill">Cannot be 0</p>
               <label for="bill">Bill</label>
               <input type="number" name="total bill" id="total-bill" placeholder="0">
               <img src="./images/icon-dollar.svg" alt="dollar sign">
@@ -33,11 +33,11 @@
                 <button percentage="0.15" class="percentage-btn">15%</button>
                 <button percentage="0.25" class="percentage-btn">25%</button>
                 <button percentage="0.50" class="percentage-btn">50%</button>
-                <input type="number" name="custom percentage" id="custom-percentage" placeholder="Custom" class="custom">
+                <input type="number" name="custom percentage" id="custom-percentage" placeholder="Custom" class="custom" min="1" max="99">
               </div>
             </div>
             <div class="number-of-people flex-column">
-              <p class="warning">Cannot be 0</p>
+              <p class="warning-people">Cannot be 0</p>
               <label for="number of people">Number of People</label>
               <input type="number" name="number of people" id="number-of-people" placeholder="0">
               <img src="./images/icon-person.svg" alt="person icon">
@@ -69,8 +69,6 @@
         </div>
       </div>
      </main>
-   
-    
      <script src="./calculator.js"></script>
 </body>
 </html>

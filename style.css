@@ -125,31 +125,25 @@ body{
 	background-color: var(--light-grayish-cyan);
 	font-weight: var(--fw-bold);
 	padding: 0;
-	display: grid;
-	place-items: center;
-}
-
-main{
-	--max-width: 40rem;
-
+	
 }
 
 .main-container{
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	gap: 2rem;
+	padding: 3rem 0;
 }
 
 .calculator-container{
-	display: grid;
-	grid-template-columns: 1fr 1fr;
+	display: flex;
+	flex-direction: column;
 	gap: 2rem;
 	background-color: var(--white);
 	border-radius: var(--rounded-edges);
 	padding: 2rem;
-	width: 100%;
 }
 
 .parameters{
@@ -222,7 +216,7 @@ button:hover{
 }
 
 .custom{
-	max-width: 13rem;
+	max-width: 8rem;
 	background-color: var(--very-light-grayish-cyan);
 	border-radius: var(--slightly-rounded-edges);
 }
@@ -290,10 +284,13 @@ button:hover{
 	background-color: var(--light-grayish-cyan);
 }
 
-.warning{
+.warning-bill, .warning-people{
 	position: absolute;
 	right: 0;
 	font-size: var(--fs-very-small);
 	color: red;
 	opacity: 0;
 }
+
+/*create a tablet and desktop view*/
+/*refine the mobile view*/

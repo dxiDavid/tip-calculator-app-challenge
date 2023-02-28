@@ -5,7 +5,8 @@ const peopleInput = document.getElementById("number-of-people");
 const tipPerPerson = document.querySelector(".tip-amount-value");
 const totalBillPerPerson = document.querySelector(".total-amount-value");
 const reset = document.querySelector(".reset");
-const warning = document.querySelector(".warning");
+const warningBill = document.querySelector(".warning-bill");
+const warningPeople = document.querySelector(".warning-people");
 const active =  document.querySelector(".selected");
 let selectedPercentage = undefined;
 
@@ -27,48 +28,114 @@ percentages.forEach((percentage) => {
 	})
 })
 
-customInput.addEventListener("keydown", (event) => {
-
-	if(event.keyCode === 13){
-		validateValue()
-	}
-
-})	
-
-billInput.addEventListener("keypress", () => {
+billInput.addEventListener("input", () => {
 	value = Number(billInput.value.toString())
+	billInput.style.outline = "2px solid hsl(172, 67%, 45%)";
 	if(value === 0){
-		warning.style.opacity = "1"
+		warning(warningBill, billInput);
 	}
 	else if(value === ""){
-		warning.style.opacity = "1"
-	}
-})
-
-function validateValue(){
-	value = Number(customInput.value.toString())
-	if(value === 0){
-		warning.style.opacity = "1"
-	}
-	else if(value === ""){
-		warning.style.opacity = "0"
+		warning(warningBill, billInput);
 	}
 	else{
-		calculate(value * 0.01)
+		allClear(warningBill, billInput);
+	}
+	validatePrice(billInput)
+})
+
+
+//validate custom input when typing
+customInput.addEventListener("input", () => {
+	value = Number(customInput.value.toString())
+	customInput.style.outline = "2px solid hsl(172, 67%, 45%)";
+	if(value === 0){
+		redOutline(customInput)
+	}
+	else if(value < 0){
+		redOutline(customInput)
+	}
+	else if(value > 50){
+		redOutline(customInput)
+	}
+	else{
+		defaultOutline(customInput)
+	}
+	
+})
+
+//calculate tip from the custom field when the enter key is pressed
+customInput.addEventListener("keydown", (event) => {
+	if(event.keyCode === 13){
+		validateCustomPercentageOnEnter()
+	}
+})	
+
+peopleInput.addEventListener("input", () => {
+	value = Number(peopleInput.value.toString());
+	peopleInput.style.outline = "2px solid hsl(172, 67%, 45%)";
+		if(value === 0){
+			warning(warningPeople, peopleInput);
+		}
+		else if(value === ""){
+			warning(warningPeople, peopleInput);
+		}
+		else{
+			allClear(warningPeople, peopleInput);
+		}
+})
+
+//remove styles on clicking anywhere
+document.addEventListener("click", function (e) {
+	if (!e.target.matches(".selected")) {
+	  percentages.forEach((e) => e.classList.remove("selected"));
+	  customInput.value = "";
+	  customInput.style.border = "0"
+	  peopleInput.style.border = "0"
+	  selectedNumber = undefined;
+	}
+});
+
+reset.addEventListener("click", () => {
+	valueReset()
+})
+
+//Main Functions
+
+function validatePrice(element){
+	const inputValue = element.value;
+	const decimalIndex = inputValue.indexOf('.');
+	const decimals = inputValue.substring(decimalIndex + 1);
+	if(inputValue.includes(".") && decimals.length > 2){
+		redOutline(element)
 	}
 }
 
 function calculate(percentage){
 	billValue = billInput.value.trim();
+	roundedBillValue = parseFloat(billValue); 
 	peopleValue = peopleInput.value.trim();
-	
 	//calc tip
-	personalBill = (billValue / peopleValue);
+	personalBill = (roundedBillValue / peopleValue);
 	personalTip = personalBill * percentage;
 	personalBillAndTip = personalBill + personalTip;
 	//show results
-	totalBillPerPerson.textContent = personalBillAndTip;
-	tipPerPerson.textContent = personalTip;
+	totalBillPerPerson.textContent = personalBillAndTip.toFixed(2);
+	tipPerPerson.textContent = personalTip.toFixed(2);
+}
+
+function validateCustomPercentageOnEnter(){
+	value = Number(customInput.value.toString())
+	truncatedValue = parseFloat(value.toFixed(2));
+	if(value === 0){
+		redOutline(customInput)
+	}
+	else if(value === ""){
+		redOutline(customInput)
+	}
+	else{
+		defaultOutline(customInput)
+		calculate(truncatedValue * 0.01)
+	}
 }
 
 function valueReset(){
@@ -77,17 +144,50 @@ function valueReset(){
 	billInput.value = "";
 	peopleInput.value = "";
 	customInput.value = "";
-	warning.style.opacity = "0"
+	warningBill.style.opacity = "0";
+	warningperson.style.opacity = "0";
+	billInput.style.border = "0"
+	billInput.style.outline = "0"
+	customInput.style.outline = "0"
+	customInput.style.border = "0"
 }
 
-reset.addEventListener("click", () => {
-	valueReset()
-})
+//utility functions
 
-document.addEventListener("click", function (e) {
-	if (!e.target.matches(".selected")) {
-	  percentages.forEach((e) => e.classList.remove("selected"));
-	  customInput.value = "";
-	  selectedNumber = undefined;
+function warning(warning, element){
+	warning.style.opacity = "1";
+	redOutline(element)
+}
+
+function allClear(warning, element){
+	warning.style.opacity = "0";
+	defaultOutline(element)
+}
+
+function validateInput(value, warningElement){
+	if(value === 0){
+		redOutline(warningElement)
 	}
-});
+	else if(value === ""){
+		redOutline(warningElement)
+	}
+	else{
+		defaultOutline(warningElement)
+	}
+}
+
+function redOutline(element){
+	element.style.border = "2px solid red";
+	element.style.outline = "0";
+}
+
+function defaultOutline(element){
+	element.style.border = "2px solid hsl(172, 67%, 45%)";
+	element.style.outline = "0";
+}
+
+//Add a check to make sure that the number of people is not a decimal
+//Add a check to make sure that the number of people is not negative
+//add a check to make sure that custom value is not negative
+//Add a check to make sure that there is no calculation done if there are empty fields and display math error on output
+

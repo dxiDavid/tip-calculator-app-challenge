@@ -1,3 +1,9 @@
+/*
+	Take a bill with two decimal places
+	Take number of people as a whole number
+	Take custom percentage to two decimal places
+*/
+
 const billInput = document.getElementById("total-bill");
 const percentages = document.querySelectorAll(".percentage-btn");
 const customInput = document.getElementById("custom-percentage");
@@ -70,7 +76,7 @@ customInput.addEventListener("keydown", (event) => {
 	}
 })	
 
-peopleInput.addEventListener("input", () => {
+peopleInput.addEventListener("input", (e) => {
 	value = Number(peopleInput.value.toString());
 	peopleInput.style.outline = "2px solid hsl(172, 67%, 45%)";
 		if(value === 0){
@@ -78,6 +84,12 @@ peopleInput.addEventListener("input", () => {
 		}
 		else if(value === ""){
 			warning(warningPeople, peopleInput);
+		}
+		else if(e.target.value.includes(".")){
+			redOutline(peopleInput);
+		}
+		else if(value < 0){
+			redOutline(peopleInput);
 		}
 		else{
 			allClear(warningPeople, peopleInput);
@@ -111,16 +123,23 @@ function validatePrice(element){
 }
 
 function calculate(percentage){
-	billValue = billInput.value.trim();
-	roundedBillValue = parseFloat(billValue); 
-	peopleValue = peopleInput.value.trim();
+	billValue = parseFloat(billInput.value.trim());
+	truncatedBillValue = Number(billValue.toFixed(2)); 
+	peopleValue = Number(peopleInput.value);
 	//calc tip
-	personalBill = (roundedBillValue / peopleValue);
+	personalBill = billValue / Math.trunc(peopleValue);
 	personalTip = personalBill * percentage;
 	personalBillAndTip = personalBill + personalTip;
+
 	//show results
-	totalBillPerPerson.textContent = personalBillAndTip.toFixed(2);
-	tipPerPerson.textContent = personalTip.toFixed(2);
+	if(billValue === undefined && peopleValue === undefined ){
+		totalBillPerPerson.textContent = "0.00";
+		tipPerPerson.textContent = "0.00";
+	}
+	else{
+		totalBillPerPerson.textContent = personalBillAndTip.toFixed(2);
+		tipPerPerson.textContent = personalTip.toFixed(2);
+	}
 }
 
 function validateCustomPercentageOnEnter(){
@@ -186,8 +205,8 @@ function defaultOutline(element){
 	element.style.outline = "0";
 }
 
-//Add a check to make sure that the number of people is not a decimal
-//Add a check to make sure that the number of people is not negative
+//Add a check to make sure that the number of people is not a decimal --done
+//Add a check to make sure that the number of people is not negative 
 //add a check to make sure that custom value is not negative
 //Add a check to make sure that there is no calculation done if there are empty fields and display math error on output
-
+//Make sure the reset button works properly

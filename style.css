@@ -15,7 +15,7 @@
 	--fs-very-small: 0.85rem;
 	--fs-small: 1.25rem;
 	--fs-medium:1.75rem;
-	--fs-large:3rem;
+	--fs-large:2.25rem;
 	--fw-light: 200;
 	--fw-regular: 400;
 	--fw-bold: 700;
@@ -111,6 +111,16 @@ select {
 	color: var(--very-dark-cyan)!important;
 }
 
+.warning{
+	border: 2px solid red;
+	outline: 0!important;
+}
+
+.default{
+	border: 0!important;
+	outline: 2px solid var(--strong-cyan);
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -119,13 +129,22 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /*______________________________________________Styles____________________________________________________*/
 
+*{
+	--outline: 1px solid rgba(255, 0, 0, 0.425);
+}
 
 body{
 	font-family: 'Space Mono', monospace;
 	background-color: var(--light-grayish-cyan);
 	font-weight: var(--fw-bold);
 	padding: 0;
-	
+	min-height: 100vh;
+	display: grid;
+	place-items: center;
+}
+
+main{
+	min-width: 100%;
 }
 
 .main-container{
@@ -138,18 +157,18 @@ body{
 }
 
 .calculator-container{
-	display: flex;
-	flex-direction: column;
+	display: grid;
 	gap: 2rem;
 	background-color: var(--white);
 	border-radius: var(--rounded-edges);
-	padding: 2rem;
+	padding: 1.45rem;
 }
 
 .parameters{
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+	padding: 1rem;
 }
 
 .bill{
@@ -163,7 +182,7 @@ body{
 	left: 1rem;
 }
 
-.bill input::placeholder{
+input::placeholder{
 	color: var(--grayish-cyan);
 }
 
@@ -193,21 +212,24 @@ input:focus{
 
 button{
 	cursor: pointer;
+	max-width: 100%;
+	text-align: center;
 }
 
-button:hover{
+.percentage-btn:hover{
 	background-color: var(--light-grayish-cyan);
 	color: var(--very-dark-cyan);
 }
 
 .percentages{
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 1rem;
+	grid-template-columns: auto auto;
+	grid-auto-flow: row;
+	gap: 0.75rem;
 }
 
 .percentage-btn{
-	padding: 0.5rem 3rem;
+	padding: 0.5rem 2rem;
 	border: 0;
 	background-color: var(--very-dark-cyan);
 	color: var(--white);
@@ -216,16 +238,14 @@ button:hover{
 }
 
 .custom{
-	max-width: 8rem;
+	--max-width: 8rem;
 	background-color: var(--very-light-grayish-cyan);
 	border-radius: var(--slightly-rounded-edges);
 }
 
 .custom input::placeholder{
 	text-align: right;
-	color: var(--very-dark-cyan);
 }
-
 .number-of-people{
 	gap: 1rem;
 	position: relative;
@@ -237,15 +257,12 @@ button:hover{
 	left: 1rem;
 }
 
-.number-of-people input::placeholder{
-	color: var(--grayish-cyan);
-}
-
 .output{
 	background-color: var(--very-dark-cyan);
 	color: var(--white);
 	border-radius: var(--rounded-edges);
 	padding: 2rem 1.25rem;
+	gap: 2rem;
 	justify-content: space-between;
 }
 
@@ -255,15 +272,16 @@ button:hover{
 
 .tip-amount{
 	justify-content: space-between;
-	align-items: center;
+	align-items:flex-end;
+	gap: 2rem;
 }
 
 .output-text p{
-	font-size: var(--fs-small);
+	font-size: var(--fs-very-small);
 }
 
 .output-text span{
-	font-size: var(--fs-very-small);
+	font-size: var(--fs-extremely-small);
 	color: var(--dark-grayish-cyan);
 }
 
@@ -276,12 +294,18 @@ button:hover{
 	border: 0;
 	padding: 0.5rem 0;
 	text-transform: uppercase;
-	background-color: var(--strong-cyan);
+	color: var(--very-dark-cyan);
+	font-size: var(--fs-small);
+	background-color: hsl(183, 96%, 22%);
 	border-radius: var(--slightly-rounded-edges);
 }
 
-.reset:hover{
-	background-color: var(--light-grayish-cyan);
+.reset-active{
+	background-color: var(--strong-cyan)!important;
+}
+
+.reset-active:hover{
+	background-color: var(--light-grayish-cyan)!important;
 }
 
 .warning-bill, .warning-people{
@@ -292,5 +316,28 @@ button:hover{
 	opacity: 0;
 }
 
-/*create a tablet and desktop view*/
-/*refine the mobile view*/
+@media (min-width: 700px){
+	.main-container{
+		padding: 0;
+	}
+	.calculator-container{
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (min-width: 900px) {
+	.parameters{
+		padding: 1.75rem;
+	}
+	.output{
+		padding: 3rem;
+	}
+	.percentages{
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	.amount{
+		font-size: var(--fs-large);
+	}
+}

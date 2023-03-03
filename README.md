@@ -14,11 +14,15 @@ This is a solution to the [Tip calculator app challenge on Frontend Mentor](http
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
+
+This challenge was unlike anything I have done before. I thought it would be very simple at first, but then I got to writing the functionality and I discovered that there was a lot going on in this "simple" tip calculator. 
+
+The calculator needed more than just a basic math function. It needed validation for the inputs, which is honestly the most challenging part, and a way to reset all the parameters. 
+
+It was a very interesting project nontheless. It really challenged my logic and forced me to learn new things. I believe it has made me a better programmer.
 
 ### The challenge
 
@@ -30,22 +34,27 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+Desktop
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+![](./images/desktop.png)
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
+Desktop - Active
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+![](./images/Desktop-active.png)
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+Mobile
+
+![](./images/mobile.png)
+
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Frontend Mentor - [@dxiDavid](https://www.frontendmentor.io/profile/dxiDavid)
+- Live Site URL: [Go Live](https://dxidavid.github.io/tip-calculator-app-challenge/)
 
 ## My process
+
+I started with a slightly styled page then moved on to the JS logic for the calculator. Once I got that working, I finished building the different layouts and tried to get as close to the design as possible. I did encounter a few problems with JS at first but it was nothing I couldn't handle. I got it to work the best way I could and I'm happy with the result.
 
 ### Built with
 
@@ -54,59 +63,27 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+- I learned how to take values from inputs and convert them into the appropriate numbers to use for calculations.
+- I also did a refresher on math operations and got to use the ``parseFloat()``,  ``Number()``, and the ``toFixed()`` methods to get the calculator to work.
+- I learned a few additional event listeners like ``keydown`` to listen for a keyboard event accompanied by the ``key`` property which you can set to the code for a specific key, in my case the enter key.
+- I also learned how to enable and disable a button using the ``.disabled`` property which is a boolean.
+- I practised using CSS Grid to get more comfortable with it.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+I might come back and try the same thing with CSS and JS frameworks
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Youtube](https://www.youtube.com/@KevinPowell) - This is where I found the best tutorials and explanations (For me) on CSS concepts and      writing functional CSS. Kevin Powel really knows his stuff and gives concise explanations.
+- [w3schools](https://w3schools.com) - This website has an entire course on JavaScript with simple examples for both basic and advanced concepts.
+- [CSS Tricks](https://css-tricks.com/) - This website provides very well written explanations to CSS concepts as well as examples for when you need to revisit a concept.
+- [mdn](https://developer.mozilla.org/en-US/) - Always helpful to read the documentation of any language.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Frontend Mentor - [@dxiDavid](https://www.frontendmentor.io/profile/dxiDavid)
+- Twitter - [@dxidavid254](https://www.twitter.com/dxidavid254)
